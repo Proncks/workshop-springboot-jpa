@@ -29,7 +29,7 @@ public class Order implements Serializable {
 	private Integer orderStatus;
 
 	@ManyToOne // indica chave estrangeira
-	@JoinColumn(name = "client_id") // nome da chave estrangeira
+	@JoinColumn(name = "client_id") // nome da chave estrangeira - informa que na tabela pedidos do BD vai ter uma chave estrangeira chamada client_id
 	private User client;
 
 	public Order() {
