@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.pronckunas.course.entities.User;
 import com.pronckunas.course.repositories.UserRepository;
+import com.pronckunas.course.services.exceptions.ResourceNotFoundException;
 
 @Service //permite registrar um serviço
 public class UserService {
@@ -20,7 +21,7 @@ public class UserService {
 	
 	public User findById(Long id) {
 		Optional<User> obj = repository.findById(id);
-		return obj.get();
+		return obj.orElseThrow(() -> new ResourceNotFoundException(id));
 	}
 	
 	//operação para inserir um objeto user no BD
